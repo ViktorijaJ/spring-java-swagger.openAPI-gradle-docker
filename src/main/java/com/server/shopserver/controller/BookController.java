@@ -4,7 +4,6 @@ import com.server.shopserver.model.Book;
 import com.server.shopserver.model.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +34,7 @@ public class BookController {
         return list;
     }
 
-    @RequestMapping(value = "/books/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/books/create", method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity<Book> createBook(@Valid @RequestBody Book book) {
         Book savedBook = bookRepository.save(book);
@@ -54,7 +53,7 @@ public class BookController {
         }
     }
 
-    @RequestMapping(value = "/books/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/books/{id}", method = RequestMethod.PUT)
     public @ResponseBody
     ResponseEntity<Book> updateBook(@PathVariable("id") Integer id, @RequestBody Book book) {
 
